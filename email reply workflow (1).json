@@ -1,0 +1,82 @@
+{
+  "name": "email reply workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{$json[\"id\"]}}",
+        "emailType": "text",
+        "message": "Hello,  Thank you for your email. I will reply soon.  Regards, Suba",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        -80
+      ],
+      "id": "f14286c2-4abe-4f4b-a973-0b8fa8979dcb",
+      "name": "Reply to a message",
+      "webhookId": "945b8d32-e711-4740-b2fc-0043db518ca5",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "guI5PwonyS8bERMx",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "7079bd5c-c178-4769-af24-2cb5f73583f0",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "pjTQ7mlteCZF9K93",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Reply to a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "00ce890e-de6e-421e-a82b-ebe22863caec",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2d8077f051418ac6c976007bf7e17d80147531b0f9393fd0696536fbed8ca97b"
+  },
+  "id": "5Eo_FwkRCCMULW8o6tBAi",
+  "tags": []
+}
